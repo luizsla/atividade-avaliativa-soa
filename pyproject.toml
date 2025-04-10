@@ -1,0 +1,17 @@
+[project]
+name = "biblioteca-virtual"
+version = "0.1.0"
+description = "Projeto protótipo de conceito de uma aplicação distribuida com serviços independentes que se comunicam via HTTP REST em formato .json"
+authors = [
+    {name = "Luiz Eduardo Amorim, 20242DWEB0004@ifba.edu.br"}
+]
+license = {text = "MIT License"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
