@@ -1,0 +1,1 @@
+# Aqui haverá a API de locações de livros que será a união entre o cliente e o livro
