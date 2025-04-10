@@ -172,3 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# PDF com descrição da atividade
+*.pdf
+
+# Arquivos de configuração do Visual Studio Code
+*.code-workspace
