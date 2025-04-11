@@ -20,3 +20,5 @@ GET_BOOK_BY_ID_QUERY = dedent("""
 LIST_BOOKS_QUERY = dedent("""
     SELECT * FROM books;
 """)
+
+

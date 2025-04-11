@@ -1,4 +1,3 @@
--- Aqui criaremos o banco books
 CREATE DATABASE bookstore;
 
 \c bookstore;

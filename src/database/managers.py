@@ -20,6 +20,7 @@ def __transform_books_tuple_to_dict(row):
     }
 
 
+
 def list_books():
     with psycopg.connect(CON_STRING) as conn:
         with conn.cursor() as cursor:
@@ -31,6 +32,30 @@ def list_books():
 
 
 def create_new_book(title, author, keywords, isbn_10):
+    primary_key = uuid4()
+
+    with psycopg.connect(CON_STRING) as conn:
+        with conn.cursor() as cursor:
+            cursor.execute(CREATE_BOOK_QUERY, (str(primary_key), title, author, keywords, isbn_10))
+
+            if cursor.rowcount == 1:
+                cursor.execute(GET_BOOK_BY_ID_QUERY, (primary_key,))
+                newly_created_book = cursor.fetchone()
+                return __transform_books_tuple_to_dict(newly_created_book)
+
+
+
+def __transform_clients_tuple_to_dict(row):
+    return {}
+
+
+
+def list_clients():
+    pass
+
+
+
+def create_new_client():
     primary_key = uuid4()
 
     with psycopg.connect(CON_STRING) as conn:
