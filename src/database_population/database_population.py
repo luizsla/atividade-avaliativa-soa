@@ -1,0 +1,3 @@
+# Aqui haverá o script de população do banco de dados fazendo chamadas HTTP para as API's
+import requests
+
