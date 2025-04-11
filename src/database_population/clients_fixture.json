@@ -1,0 +1,74 @@
+{
+    "clients": [
+        {
+            "id": 1,
+            "name": "Carlos Eduardo Anthony Silveira",
+            "cpf": "109.059.705-35",
+            "birth_date": "04/03/2002",
+            "email": "carlos_silveira@inglesasset.com.br",
+            "address": {
+                "cep": "44180-970",
+                "street": "Praça da Matriz 163 - Centro",
+                "city": "Antônio Cardoso",
+                "number": "217",
+                "state": "BA"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Daniel Bruno Julio Novaes",
+            "cpf": "684.502.065-53",
+            "birth_date": "11/01/2002",
+            "email": "danielbrunonovaes@fiorecomunicacao.com.br",
+            "address": {
+                "cep": "44180-970",
+                "street": "Praça da Matriz 163 - Cidade Nova",
+                "city": "Timon",
+                "number": "809",
+                "state": "MA"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Renato Emanuel Silveira",
+            "cpf": "641.841.583-31",
+            "birth_date": "20/02/1986",
+            "email": "renato_emanuel_silveira@cartovale.com.br",
+            "address": {
+                "cep": "44180-970",
+                "street": "Praça da Matriz 163 - Parque Amazonas",
+                "city": "Imperatriz",
+                "number": "458",
+                "state": "MA"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Marina Stefany Laura Aragão",
+            "cpf": "281.551.661-63",
+            "birth_date": "24/02/1990",
+            "email": "marina.stefany.aragao@regional.com.br",
+            "address": {
+                "cep": "71751-320",
+                "street": "Núcleo Rural Vargem Bonita Rua 2 Chácara 42 - Núcleo Rural Vargem Bonita (Núcleo Bandeirante)",
+                "city": "Brasília",
+                "number": "141",
+                "state": "DF"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Ana Mirella Galvão",
+            "cpf": "978.332.031-90",
+            "birth_date": "08/02/1998",
+            "email": "ana.mirella.galvao@jarretta.com",
+            "address": {
+                "cep": "79014-090",
+                "street": "Rua Brazzaville - Jardim Presidente",
+                "city": "Campo Grande",
+                "number": "752",
+                "state": "MS"
+            }
+        }
+    ]
+}
