@@ -11,6 +11,12 @@ CREATE_BOOK_QUERY = dedent("""
     ) VALUES (%s, %s, %s, %s, %s);
 """)
 
-LIST_BOOKS_QUERY = """
+
+GET_BOOK_BY_ID_QUERY = dedent("""
+    SELECT * FROM books where id = %s
+""")
+
+
+LIST_BOOKS_QUERY = dedent("""
     SELECT * FROM books;
-"""
+""")
