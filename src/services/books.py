@@ -25,7 +25,7 @@ def books_create():
         title = request_data["title"]
         author = request_data["author"]
         keywords = request_data["keywords"]
-        isbn_10 = request_data["isbn_10"]
+        isbn_10 = request_data["isbn-10"]
     except KeyError:
         return "JSON body params `title`, `author`, `keywords` and `isbn_10` are mandatory", HTTPStatus.BAD_REQUEST
 
