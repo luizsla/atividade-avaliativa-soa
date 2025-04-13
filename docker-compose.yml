@@ -25,37 +25,31 @@ services:
     volumes:
       - ./src/database_population/create_books_database.sql:/docker-entrypoint-initdb.d/init.sql
 
-  #MEDICINE
-  # medicine: 
-  #   build: .
-  #   image: medicine
-  #   container_name: medicine
-  #   hostname: medicine
-  #   restart: always
-  #   volumes:
-  #     - ./services/medicine:/app
-  #   command: python3 /app/service.py
-  #   ports:
-  #     - 8001:8000
-  #   depends_on:
-  #     - medicine_db
+  clients: 
+    build: .
+    image: clients
+    container_name: clients
+    hostname: clients
+    restart: always
+    volumes:
+      - ./src:/servico
+    command: flask --app services/clients.py run --host=0.0.0.0
+    environment:
+      - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@clients_db:5432/bookstore
+    ports:
+      - 5002:5000
+    depends_on:
+      - clients_db
 
-  # medicine_db:
-  #   image: mysql:8.0
-  #   container_name: medicine_db
-  #   hostname: medicine_db
-  #   restart: always
-  #   ports:
-  #     - 3307:3306
-  #   environment:
-  #     MYSQL_ROOT_HOST: localhost
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: medicine_db
-  #     MYSQL_USER: user
-  #     MYSQL_PASSWORD: user
-  #   volumes:
-  #     - ./services/medicine/database/mysql:/var/lib/mysql
-  #     - ./services/medicine/database/migrations:/docker-entrypoint-initdb.d
+  clients_db:
+    image: postgres
+    container_name: clients_db
+    hostname: clients_db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./src/database_population/create_clients_database.sql:/docker-entrypoint-initdb.d/init.sql
 
   # #ANIMAL
   # animal: 
