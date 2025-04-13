@@ -2,7 +2,7 @@ from http import HTTPStatus
 
 from flask import Flask, request
 
-from database.managers import list_clients, create_new_client
+from database.managers import list_rentals, create_new_rental
 
 app = Flask(__name__)
 
@@ -28,11 +28,11 @@ def alive_smoke_test():
 
 @app.get('/rentals')
 def clients_list():
-    clients = list_clients()
+    rentals = list_rentals()
 
     return {
-        "clients": clients,
-        "count": len(clients)
+        "rentals": rentals,
+        "count": len(rentals)
     }, HTTPStatus.OK
 
 
@@ -41,14 +41,13 @@ def clients_list():
 def clients_create():
     try:
         request_data = request.get_json()
-        name = request_data["name"]
-        cpf = request_data["cpf"]
-        birth_date = request_data["birth_date"]
-        email = request_data["email"]
-        address = request_data["address"]
+        client_id = request_data["client_id"]
+        rented_books = request_data["rented_books"]
+        rental_date = request_data["rental_date"]
+        return_date = request_data["return_date"]
     except KeyError:
-        return "JSON body params `name`, `cpf`, `birth_date`, `email` and `address` are mandatory", HTTPStatus.BAD_REQUEST
+        return "JSON body params `client_id`, `rented_books`, `rental_date` and `return_date` are mandatory", HTTPStatus.BAD_REQUEST
 
-    new_book = create_new_client(name, cpf, birth_date, email, address)
+    new_book = create_new_rental(client_id, rented_books, rental_date, return_date)
 
     return new_book, HTTPStatus.CREATED

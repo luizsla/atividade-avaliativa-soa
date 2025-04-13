@@ -136,4 +136,4 @@ def create_new_rental(client_id, rented_books, rental_date, return_date):
             if cursor.rowcount == 1:
                 cursor.execute(GET_RENTAL_BY_ID_QUERY, (primary_key,))
                 newly_created_book = cursor.fetchone()
-                return __transform_clients_tuple_to_dict(newly_created_book)
+                return __transform_rentals_tuple_to_dicr(newly_created_book)
