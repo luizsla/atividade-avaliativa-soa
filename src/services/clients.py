@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 API_INFO = {
     "version": "0.0.1",
-    "description": "Aplicação REST* que cuida do domínio de clientes (`clients`) para serviço composto de livraria"
+    "description": "Aplicação REST* que cuida do domínio de clientes (`clients`) para serviço composto de biblioteca"
 }
 
 ALIVE = "ALIVE"

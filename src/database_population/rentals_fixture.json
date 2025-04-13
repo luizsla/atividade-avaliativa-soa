@@ -1,3 +1,14 @@
 {
-    "rentals": []
+    "rentals": [
+        {
+            "id": "07ff2fcc-f8d0-4bdc-b602-6fa0c2985264",
+            "client_id": "243f6c52-279d-4b21-813b-791d619702ad",
+            "rented_books": [
+                "b1297024-ab29-45ca-8d17-d1ed02d6cd00",
+                "46fbb6de-7ab8-4191-9648-499a73193f8c"
+            ],
+            "rental_date": "13/03/2025",
+            "return_date": "23/03/2025"
+        }
+    ]
 }

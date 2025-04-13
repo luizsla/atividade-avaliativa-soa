@@ -42,3 +42,26 @@ GET_CLIENT_BY_ID_QUERY = dedent("""
 LIST_CLIENTS_QUERY = dedent("""
     SELECT * FROM clients;
 """)
+
+
+CREATE_RENTAL_QUERY = dedent("""
+    INSERT INTO rentals (
+        id,
+        client_id,
+        rented_books,
+        rental_date,
+        return_date
+    ) VALUES (
+        %s, %s, %s, %s, %s
+    );
+""")
+
+
+GET_RENTAL_BY_ID_QUERY = dedent("""
+    SELECT * FROM rentals WHERE id = %s;
+""")
+
+
+LIST_RENTALS_QUERY = dedent("""
+    SELECT * FROM rentals;
+""")
