@@ -23,7 +23,7 @@ LIST_BOOKS_QUERY = dedent("""
 
 
 CREATE_CLIENT_QUERY = dedent("""
-    INSERT INTO users (
+    INSERT INTO clients (
         id,
         name,
         cpf,

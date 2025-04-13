@@ -1,4 +1,5 @@
 import psycopg
+from psycopg.types.json import Json
 
 from uuid import uuid4
 
@@ -53,6 +54,8 @@ def create_new_book(title, author, keywords, isbn_10):
 
 
 def __transform_clients_tuple_to_dict(row):
+
+
     return {
         "id": row[0],
         "name": row[1],
@@ -76,10 +79,15 @@ def list_clients():
 
 def create_new_client(name, cpf, birth_date, email, address):
     primary_key = uuid4()
+    birth_date_psql = "{year}-{month}-{day}".format(
+        year=birth_date[-4:], month=birth_date[3:5], day=birth_date[:2]
+    )
 
     with psycopg.connect(CON_STRING) as conn:
         with conn.cursor() as cursor:
-            cursor.execute(CREATE_CLIENT_QUERY, (str(primary_key), name, cpf, birth_date, email, address))
+            cursor.execute(CREATE_CLIENT_QUERY, (
+                str(primary_key), name, cpf, birth_date_psql, email, Json(address)
+            ))
 
             if cursor.rowcount == 1:
                 cursor.execute(GET_CLIENT_BY_ID_QUERY, (primary_key,))
