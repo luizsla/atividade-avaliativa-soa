@@ -4,7 +4,27 @@ from flask import Flask, request
 
 from database.managers import list_books, create_new_book
 
+
 app = Flask(__name__)
+
+API_INFO = {
+    "version": "0.0.1",
+    "description": "Aplicação REST* que cuida do domínio de livros (`books`) para serviço composto de livraria"
+}
+
+ALIVE = "ALIVE"
+
+
+@app.get("/")
+def api_root():
+    return API_INFO, HTTPStatus.OK
+
+
+
+@app.get("/alive")
+def alive_smoke_test():
+    return {"status": ALIVE}, HTTPStatus.OK
+
 
 
 @app.get('/books')
