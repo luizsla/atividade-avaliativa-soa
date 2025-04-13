@@ -54,8 +54,6 @@ def create_new_book(title, author, keywords, isbn_10):
 
 
 def __transform_clients_tuple_to_dict(row):
-
-
     return {
         "id": row[0],
         "name": row[1],
