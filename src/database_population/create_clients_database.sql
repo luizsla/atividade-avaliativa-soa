@@ -7,6 +7,6 @@ CREATE TABLE clients (
     name VARCHAR(255) NOT NULL,
     cpf VARCHAR(14) UNIQUE NOT NULL,
     birth_date DATE NOT NULL,
-    email VARCHAR(255) unique not null,
-    address json
+    email VARCHAR(255) UNIQUE NOT NULL,
+    address JSON
 );

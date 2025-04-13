@@ -32,7 +32,3 @@ def books_create():
     new_book = create_new_book(title, author, keywords, isbn_10)
 
     return new_book, HTTPStatus.CREATED
-
-
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
