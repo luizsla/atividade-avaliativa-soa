@@ -9,7 +9,11 @@ import requests
 
 _BOOKS_FIXTURE = "books_fixture.json"
 
+BOOKS_SERVICE_URL = "http://localhost:5000/books"
+
 _CLIENTS_FIXTURE = "clients_fixture.json"
+
+CLIENTS_SERVICE_URL = "http://localhost:5001/clients"
 
 _script_dir = os.path.dirname(__file__)
 
@@ -25,11 +29,9 @@ def _load_fixture(loc):
 
 
 def _post_initial_books(books):
-    books_api_url = "http://localhost:5000/books"
-
     books_created = []
     for book in books:
-        response = requests.post(books_api_url, json=book)
+        response = requests.post(BOOKS_SERVICE_URL, json=book)
         if response.status_code == HTTPStatus.CREATED:
             created_book = response.json()
             books_created.append(created_book)
@@ -40,11 +42,9 @@ def _post_initial_books(books):
 
 
 def _post_initial_clients(clients):
-    clients_api_url = "http://localhost:5001/clients"
-
     clients_created = []
     for client in clients:
-        response = requests.post(clients_api_url, json=client)
+        response = requests.post(CLIENTS_SERVICE_URL, json=client)
         if response.status_code == HTTPStatus.CREATED:
             created_client = response.json()
             clients_created.append(created_client)
@@ -67,7 +67,6 @@ def main():
             count, ids = _post_initial_clients(dados["clients"])
             print(count, "clientes criados com sucesso")
             pprint(ids)
-
 
     print("População de dados inicial do serviço realizada com sucesso")
 
