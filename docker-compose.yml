@@ -1,0 +1,85 @@
+services:
+  books: 
+    build: .
+    image: books
+    container_name: books
+    hostname: books
+    restart: always
+    volumes:
+      - ./src:/servico
+    command: flask --app services/books.py run --host=0.0.0.0
+    environment:
+      - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@books_db:5432/bookstore
+    ports:
+      - 5001:5000
+    depends_on:
+      - books_db
+  
+  books_db:
+    image: postgres
+    container_name: books_db
+    hostname: books_db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./src/database_population/create_books_database.sql:/docker-entrypoint-initdb.d/init.sql
+
+  clients: 
+    build: .
+    image: clients
+    container_name: clients
+    hostname: clients
+    restart: always
+    volumes:
+      - ./src:/servico
+    command: flask --app services/clients.py run --host=0.0.0.0
+    environment:
+      - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@clients_db:5432/bookstore
+    ports:
+      - 5002:5000
+    depends_on:
+      - clients_db
+
+  clients_db:
+    image: postgres
+    container_name: clients_db
+    hostname: clients_db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./src/database_population/create_clients_database.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # #ANIMAL
+  # animal: 
+  #   build: .
+  #   image: animal
+  #   container_name: animal
+  #   hostname: animal
+  #   restart: always
+  #   volumes:
+  #     - ./services/animal:/app
+  #   command: python3 /app/service.py
+  #   ports:
+  #     - 8002:8000
+  #   depends_on:
+  #     - animal_db
+
+  # animal_db:
+  #   image: mysql:8.0
+  #   container_name: animal_db
+  #   hostname: animal_db
+  #   restart: always
+  #   ports:
+  #     - 3308:3306
+  #   environment:
+  #     MYSQL_ROOT_HOST: localhost
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: animal_db
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: user
+  #   volumes:
+  #     - ./services/animal/database/mysql:/var/lib/mysql
+  #     - ./services/animal/database/migrations:/docker-entrypoint-initdb.d
+

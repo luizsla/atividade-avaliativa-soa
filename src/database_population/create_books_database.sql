@@ -1,5 +1,6 @@
--- Aqui criaremos o banco books
-CREATE DATABASE BOOKSTORE;
+CREATE DATABASE bookstore;
+
+\c bookstore;
 
 CREATE TABLE books (
     id UUID PRIMARY KEY,
