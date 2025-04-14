@@ -1,3 +1,34 @@
 {
-    "rentals": []
+    "rentals": [
+        {
+            "id": "07ff2fcc-f8d0-4bdc-b602-6fa0c2985264",
+            "client_id": "243f6c52-279d-4b21-813b-791d619702ad",
+            "rented_books": [
+                "b1297024-ab29-45ca-8d17-d1ed02d6cd00",
+                "46fbb6de-7ab8-4191-9648-499a73193f8c"
+            ],
+            "rental_date": "13/03/2025",
+            "return_date": "23/03/2025"
+        },
+        {
+            "id": "9a1bfa1d-5ccb-4360-9704-ad0957dc8f4c",
+            "client_id": "a1744adb-636e-4e56-af6b-9222638d0c9e",
+            "rented_books": [
+                "b1297024-ab29-45ca-8d17-d1ed02d6cd00"
+            ],
+            "rental_date": "02/03/2025",
+            "return_date": "07/03/2025"
+        },
+        {
+            "id": "7063e6ff-6d34-48ac-9bdd-9174c9b30ee8",
+            "client_id": "de3f0678-36c5-4f21-a017-fb4f554c3d74",
+            "rented_books": [
+                "b1297024-ab29-45ca-8d17-d1ed02d6cd00",
+                "bb1ad814-2a99-4d24-8d15-ba2e84ba648a",
+                "c902a156-1c37-47b3-8e6b-408ed4e5fbc6"
+            ],
+            "rental_date": "02/03/2025",
+            "return_date": "17/03/2025"
+        }
+    ]
 }
