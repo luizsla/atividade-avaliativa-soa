@@ -51,35 +51,29 @@ services:
     volumes:
       - ./src/database_population/create_clients_database.sql:/docker-entrypoint-initdb.d/init.sql
 
-  # #ANIMAL
-  # animal: 
-  #   build: .
-  #   image: animal
-  #   container_name: animal
-  #   hostname: animal
-  #   restart: always
-  #   volumes:
-  #     - ./services/animal:/app
-  #   command: python3 /app/service.py
-  #   ports:
-  #     - 8002:8000
-  #   depends_on:
-  #     - animal_db
+  rentals: 
+    build: .
+    image: rentals
+    container_name: rentals
+    hostname: rentals
+    restart: always
+    volumes:
+      - ./src:/servico
+    command: flask --app services/rentals.py run --host=0.0.0.0
+    environment:
+      - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@rentals_db:5432/bookstore
+    ports:
+      - 5003:5000
+    depends_on:
+      - rentals_db
 
-  # animal_db:
-  #   image: mysql:8.0
-  #   container_name: animal_db
-  #   hostname: animal_db
-  #   restart: always
-  #   ports:
-  #     - 3308:3306
-  #   environment:
-  #     MYSQL_ROOT_HOST: localhost
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: animal_db
-  #     MYSQL_USER: user
-  #     MYSQL_PASSWORD: user
-  #   volumes:
-  #     - ./services/animal/database/mysql:/var/lib/mysql
-  #     - ./services/animal/database/migrations:/docker-entrypoint-initdb.d
+  rentals_db:
+    image: postgres
+    container_name: rentals_db
+    hostname: rentals_db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./src/database_population/create_rentals_database.sql:/docker-entrypoint-initdb.d/init.sql
 
