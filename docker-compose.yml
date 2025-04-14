@@ -7,7 +7,7 @@ services:
     restart: always
     volumes:
       - ./src:/servico
-    command: flask --app services/books.py run --host=0.0.0.0
+    command: flask --app services/books.py run --host=0.0.0.0 --debug
     environment:
       - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@books_db:5432/bookstore
     ports:
@@ -33,7 +33,7 @@ services:
     restart: always
     volumes:
       - ./src:/servico
-    command: flask --app services/clients.py run --host=0.0.0.0
+    command: flask --app services/clients.py run --host=0.0.0.0 --debug
     environment:
       - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@clients_db:5432/bookstore
     ports:
@@ -59,7 +59,7 @@ services:
     restart: always
     volumes:
       - ./src:/servico
-    command: flask --app services/rentals.py run --host=0.0.0.0
+    command: flask --app services/rentals.py run --host=0.0.0.0 --debug
     environment:
       - DATABASE_CONNECTION_STRING=postgresql://postgres:mysecretpassword@rentals_db:5432/bookstore
     ports:
